@@ -1,3 +1,4 @@
+import tools.InvalidMovementException;
 import tools.InvariantBrokenException;
 
 /**
@@ -30,6 +31,18 @@ public class Board {
 	private boolean solved;
 	
 	/**
+	 * Store the current position of the empty space.
+	 */
+	private int spacePosition;
+	
+	/**
+	 * Represents the possible directions the empty space can move.
+	 */
+	public enum Direction {
+		UP, DOWN, LEFT, RIGHT;
+	}
+	
+	/**
 	 * Class constructor.
 	 * Create {@link #SIZE} tiles, numbered from 1 to 15.
 	 * The empty space is represented by the value 0.
@@ -45,6 +58,7 @@ public class Board {
 		}
 		IntTile newEmpty = new IntTile(0,true);
 		tiles[i] = newEmpty;
+		spacePosition = i;
 
 		if (!invariant() || !isSolved()){
 			throw new InvariantBrokenException("Invariant broken.");
@@ -79,6 +93,7 @@ public class Board {
 	public boolean isSolved() {
 		for (int i = 0 ; i < SIZE - 1 ; i++){
 			if (tiles[i].getIntValue() != i+1){
+				setSolved(false);
 				return false;
 			}
 		}
@@ -86,6 +101,7 @@ public class Board {
 			setSolved(true);
 			return true;
 		}
+		setSolved(false);
 		return false;
 	}
 	
@@ -100,11 +116,161 @@ public class Board {
 	/**
 	 * Setter value for the solved attribute.
 	 * @param solved true if the puzzle is solved. False otherwise.
+	 * @throws IllegalArgumentException if other direction than UP, DOWN,
+	 * 			LEFT, RIGHT 
 	 */
 	public void setSolved(boolean solved) {
 		this.solved = solved;
 	}
 	
+	/**
+	 * Move the empty space to the specified direction.
+	 * @param dir direction the empty space is going to be moved.
+	 * @throws IllegalArgumentException if other direction than UP, DOWN,
+	 * 			LEFT, RIGHT is passed as parameter.
+	 */
+	public void moveEmptyTile(Direction dir) throws IllegalArgumentException {
+		switch (dir) {
+			case UP:
+				moveUp();
+				break;
+			case DOWN:
+				moveDown();
+				break;
+			case LEFT: 
+				moveLeft();
+				break;
+			case RIGHT:
+				moveRight();
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown direction.");
+		}
+		isSolved();
+		if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken when moving.");
+		}
+	}
+	
+	/**
+	 * Moves the empty space to the right.
+	 * @throws InvalidMovementException if the empty space cannot move to the right
+	 * 									(it is in the border).
+	 * @throws InvariantBrokenException if the invariant if broken when moving the 
+	 * 									empty space.
+	 */
+	private void moveRight() throws InvalidMovementException, InvariantBrokenException {
+		if ((spacePosition + 1) % 4 == 0){ 
+			throw new InvalidMovementException("Cannot move right.");
+		}
+		IntTile aux = tiles[spacePosition];
+		tiles[spacePosition] = tiles[spacePosition + 1];
+		tiles[spacePosition + 1] = aux;
+			
+		setTileOrdered(spacePosition);
+		setTileOrdered(spacePosition + 1);
+	
+		spacePosition += 1;
+		
+		//if (!invariant()){
+		//	throw new InvariantBrokenException("Invariant broken when moving right.");
+		//}
+		
+	}
+
+	/**
+	 * Moves the empty space to the left.
+	 * @throws InvalidMovementException if the empty space cannot move to the left
+	 * 									(it is in the border).
+	 * @throws InvariantBrokenException if the invariant if broken when moving the 
+	 * 									empty space.
+	 */
+	private void moveLeft() throws InvalidMovementException, InvariantBrokenException {
+		if (spacePosition % 4 == 0){ 
+			throw new InvalidMovementException("Cannot move left.");
+		}
+		IntTile aux = tiles[spacePosition];
+		tiles[spacePosition] = tiles[spacePosition - 1];
+		tiles[spacePosition - 1] = aux;
+			
+		setTileOrdered(spacePosition);
+		setTileOrdered(spacePosition - 1);
+		
+		spacePosition -= 1;
+		
+		//if (!invariant()){
+		//	throw new InvariantBrokenException("Invariant broken when moving left.");
+		//}
+		
+	}
+
+	/**
+	 * Moves the empty space down.
+	 * @throws InvalidMovementException if the empty space cannot move to the down
+	 * 									(it is in the border).
+	 * @throws InvariantBrokenException if the invariant if broken when moving the 
+	 * 									empty space.
+	 */
+	private void moveDown() throws InvalidMovementException, InvariantBrokenException {
+		if (spacePosition > 11){ 
+			throw new InvalidMovementException("Cannot move down.");
+		}
+		IntTile aux = tiles[spacePosition];
+		tiles[spacePosition] = tiles[spacePosition + 4];
+		tiles[spacePosition + 4] = aux;
+			
+		setTileOrdered(spacePosition);
+		setTileOrdered(spacePosition +  4);
+	
+		spacePosition += 4;
+		
+		//if (!invariant()){
+		//	throw new InvariantBrokenException("Invariant broken when moving down.");
+		//}
+		
+	}
+
+	/**
+	 * Move the empty space up.
+	 * @throws InvalidMovementException if the empty space cannot move to the up
+	 * 									(it is in the border).
+	 * @throws InvariantBrokenException if the invariant if broken when moving the 
+	 * 									empty space.
+	 */
+	private void moveUp() throws InvalidMovementException, InvariantBrokenException {
+		if (spacePosition < 4){ 
+			throw new InvalidMovementException("Cannot move up.");
+		}
+		IntTile aux = tiles[spacePosition];
+		tiles[spacePosition] = tiles[spacePosition - 4];
+		tiles[spacePosition - 4] = aux;
+			
+		setTileOrdered(spacePosition);
+		setTileOrdered(spacePosition -4);
+	
+		spacePosition -= 4;
+		
+		//if (!invariant()){
+		//	throw new InvariantBrokenException("Invariant broken when moving up.");
+		//}
+	}
+
+	/**
+	 * Sets a value for the ordered attribute of the tile.
+	 * @param pos position where the tile ordered attribute is going to be changed.
+	 */
+	private void setTileOrdered(int pos) {
+		if (tiles[pos].getIntValue() == 0 && pos == 15){
+			tiles[pos].setOrdered(true);
+		}
+		else if (tiles[pos].getIntValue() == pos + 1){
+			tiles[pos].setOrdered(true);
+		}
+		else {
+			tiles[pos].setOrdered(false);
+		}
+	}
+
 	/**
 	 * Check if the amount of tiles in the tile list {@link #tiles} is equal
 	 * to {@link #SIZE}. 
@@ -114,10 +280,16 @@ public class Board {
 	public boolean invariant(){
 		for (int i = 0 ; i < SIZE; i++){
 			if (tiles[i] == null || !tiles[i].invariant()){
+				System.out.println("1");
 				return false;
 			}
 		}
 		if (isSolved()!=getSolved()){
+			System.out.println("2");
+			return false;
+		}
+		if (spacePosition < IntTile.MIN || spacePosition > IntTile.MAX){
+			System.out.println("3");
 			return false;
 		}
 		return true;
@@ -154,8 +326,22 @@ public class Board {
 	public static void main(String[] args){
 		Board b1 = new Board();
 		System.out.println("B1 \n" + b1);
+		//System.out.println("B1 \n" + b1.isSolved());
+		b1.moveEmptyTile(Direction.LEFT);
+		System.out.println("LEFT \n" + b1);
+		b1.moveEmptyTile(Direction.UP);
+		System.out.println("UP \n" + b1);
+		//System.out.println("B1 \n" + b1.isSolved());
+		b1.moveEmptyTile(Direction.RIGHT);
+		System.out.println("RIGHT \n" + b1);
+		//System.out.println("B1 \n" + b1.isSolved());
+		b1.moveEmptyTile(Direction.DOWN);
+		System.out.println("DOWN \n" + b1);
+		b1.moveEmptyTile(Direction.UP);
+		b1.moveEmptyTile(Direction.LEFT);
+		b1.moveEmptyTile(Direction.DOWN);
+		b1.moveEmptyTile(Direction.RIGHT);
+		System.out.println("NEW \n" + b1);
 		System.out.println("B1 \n" + b1.isSolved());
-		System.out.println("B1 \n" + b1.getTiles());
-
 	}
 }
