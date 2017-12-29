@@ -1,3 +1,4 @@
+
 import tools.InvalidMovementException;
 import tools.InvariantBrokenException;
 
@@ -34,13 +35,6 @@ public class Board {
 	 * Store the current position of the empty space.
 	 */
 	private int spacePosition;
-	
-	/**
-	 * Represents the possible directions the empty space can move.
-	 */
-	public enum Direction {
-		UP, DOWN, LEFT, RIGHT;
-	}
 	
 	/**
 	 * Class constructor.
@@ -124,12 +118,28 @@ public class Board {
 	}
 	
 	/**
+	 * Apply a solving sequence to a board.
+	 * Catches the InvalidMovementException when an invalid movement is applied.
+	 * @param seq sequence of directions to move the empty space.
+	 */
+	public void applySolvingSequence (SolvingSequence seq){
+		for (SolvingSequence.Direction dir : seq.getSeq()){
+			try{
+				moveEmptyTile(dir);
+			} catch (InvalidMovementException e){
+				System.out.println("Invalid sequence");
+			}
+			System.out.println(dir + "\n" + this);
+		}
+	}
+	
+	/**
 	 * Move the empty space to the specified direction.
 	 * @param dir direction the empty space is going to be moved.
 	 * @throws IllegalArgumentException if other direction than UP, DOWN,
 	 * 			LEFT, RIGHT is passed as parameter.
 	 */
-	public void moveEmptyTile(Direction dir) throws IllegalArgumentException {
+	public void moveEmptyTile(SolvingSequence.Direction dir) throws IllegalArgumentException {
 		switch (dir) {
 			case UP:
 				moveUp();
@@ -268,6 +278,8 @@ public class Board {
 		}
 		else {
 			tiles[pos].setOrdered(false);
+			setSolved(false);
+		    
 		}
 	}
 
@@ -297,10 +309,10 @@ public class Board {
 	
 	/**
 	 * To string method that returns the board in the following format:
-	 * 1  2  3  4
-	 * 5  6  7  8
-	 * 9  10 11 12
-	 * 13 14 15 __ 
+	 *   1  2  3  4
+	 *   5  6  7  8
+	 *   9  10 11 12
+	 *   13 14 15 __ 
 	 * @return a string with the desired format.
 	 */
 	public String toString(){
@@ -326,21 +338,15 @@ public class Board {
 	public static void main(String[] args){
 		Board b1 = new Board();
 		System.out.println("B1 \n" + b1);
-		//System.out.println("B1 \n" + b1.isSolved());
-		b1.moveEmptyTile(Direction.LEFT);
-		System.out.println("LEFT \n" + b1);
-		b1.moveEmptyTile(Direction.UP);
-		System.out.println("UP \n" + b1);
-		//System.out.println("B1 \n" + b1.isSolved());
-		b1.moveEmptyTile(Direction.RIGHT);
-		System.out.println("RIGHT \n" + b1);
-		//System.out.println("B1 \n" + b1.isSolved());
-		b1.moveEmptyTile(Direction.DOWN);
-		System.out.println("DOWN \n" + b1);
-		b1.moveEmptyTile(Direction.UP);
-		b1.moveEmptyTile(Direction.LEFT);
-		b1.moveEmptyTile(Direction.DOWN);
-		b1.moveEmptyTile(Direction.RIGHT);
+		SolvingSequence seq = new SolvingSequence();
+		seq.addMovement(SolvingSequence.Direction.LEFT);
+		seq.addMovement(SolvingSequence.Direction.UP);
+		seq.addMovement(SolvingSequence.Direction.UP);
+		seq.addMovement(SolvingSequence.Direction.UP);
+		seq.addMovement(SolvingSequence.Direction.RIGHT);
+		seq.addMovement(SolvingSequence.Direction.DOWN);
+		System.out.println("Seq \n" + seq);
+		b1.applySolvingSequence(seq);
 		System.out.println("NEW \n" + b1);
 		System.out.println("B1 \n" + b1.isSolved());
 	}
