@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Front End</string>
+    <string name="puzzle">15-Puzzle</string>
+    <string name="play">Play</string>
+    <string name="help">Help</string>
+    <string name="instructions">Display here the instructions of the game</string>
+</resources>
