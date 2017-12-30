@@ -3,18 +3,18 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>530</x>
+      <x>540</x>
       <y>130</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Main Screen</panel_attributes>
+    <panel_attributes>Menu Screen</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>540</x>
+      <x>550</x>
       <y>210</y>
       <w>120</w>
       <h>60</h>
@@ -27,7 +27,7 @@ type=decision</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>530</x>
+      <x>540</x>
       <y>310</y>
       <w>140</w>
       <h>40</h>
@@ -38,7 +38,7 @@ type=decision</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>540</x>
+      <x>550</x>
       <y>400</y>
       <w>120</w>
       <h>60</h>
@@ -51,7 +51,7 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>160</y>
       <w>30</w>
       <h>70</h>
@@ -62,7 +62,7 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>260</y>
       <w>60</w>
       <h>70</h>
@@ -74,7 +74,7 @@ play</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>340</y>
       <w>30</w>
       <h>80</h>
@@ -85,21 +85,21 @@ play</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
+      <x>500</x>
       <y>320</y>
-      <w>90</w>
+      <w>70</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 slide</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;10.0;10.0;110.0;70.0;110.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0;10.0;110.0;50.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>370</x>
+      <x>380</x>
       <y>10</y>
-      <w>580</w>
+      <w>640</w>
       <h>910</h>
     </coordinates>
     <panel_attributes>15-Puzzle
@@ -109,7 +109,7 @@ valign=top</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>70</y>
       <w>20</w>
       <h>20</h>
@@ -120,7 +120,7 @@ valign=top</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>80</y>
       <w>30</w>
       <h>70</h>
@@ -131,7 +131,7 @@ valign=top</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>740</x>
+      <x>750</x>
       <y>220</y>
       <w>110</w>
       <h>40</h>
@@ -142,7 +142,7 @@ valign=top</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
+      <x>660</x>
       <y>220</y>
       <w>110</w>
       <h>40</h>
@@ -154,7 +154,7 @@ help</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>600</x>
       <y>450</y>
       <w>60</w>
       <h>70</h>
@@ -166,7 +166,7 @@ solve</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>610</x>
+      <x>620</x>
       <y>560</y>
       <w>140</w>
       <h>40</h>
@@ -178,7 +178,7 @@ type=sender</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>560</x>
+      <x>570</x>
       <y>490</y>
       <w>80</w>
       <h>20</h>
@@ -190,7 +190,7 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
+      <x>620</x>
       <y>490</y>
       <w>60</w>
       <h>90</h>
@@ -201,7 +201,7 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
+      <x>580</x>
       <y>490</y>
       <w>30</w>
       <h>240</h>
@@ -212,7 +212,7 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>620</x>
+      <x>630</x>
       <y>630</y>
       <w>180</w>
       <h>40</h>
@@ -224,7 +224,7 @@ type=receiver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
+      <x>680</x>
       <y>660</y>
       <w>30</w>
       <h>70</h>
@@ -235,7 +235,7 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>560</x>
+      <x>570</x>
       <y>700</y>
       <w>140</w>
       <h>20</h>
@@ -247,7 +247,7 @@ type=receiver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
+      <x>630</x>
       <y>700</y>
       <w>30</w>
       <h>70</h>
@@ -258,7 +258,7 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>550</x>
+      <x>560</x>
       <y>750</y>
       <w>160</w>
       <h>40</h>
@@ -269,7 +269,7 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>570</x>
+      <x>580</x>
       <y>820</y>
       <w>120</w>
       <h>60</h>
@@ -282,7 +282,7 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
+      <x>630</x>
       <y>780</y>
       <w>30</w>
       <h>60</h>
@@ -293,7 +293,7 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
+      <x>670</x>
       <y>320</y>
       <w>280</w>
       <h>550</h>
@@ -305,7 +305,7 @@ play again</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>420</x>
+      <x>430</x>
       <y>840</y>
       <w>20</w>
       <h>20</h>
@@ -316,7 +316,7 @@ play again</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
+      <x>440</x>
       <y>830</y>
       <w>160</w>
       <h>40</h>
@@ -328,7 +328,7 @@ exit</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
+      <x>430</x>
       <y>230</y>
       <w>140</w>
       <h>630</h>
@@ -336,5 +336,29 @@ exit</panel_attributes>
     <panel_attributes>lt=&lt;-
 exit</panel_attributes>
     <additional_attributes>10.0;610.0;10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>140</y>
+      <w>140</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+go back</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0;10.0;310.0;120.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>140</y>
+      <w>390</w>
+      <h>780</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+go back</panel_attributes>
+    <additional_attributes>50.0;10.0;320.0;10.0;320.0;760.0;10.0;760.0;10.0;740.0</additional_attributes>
   </element>
 </diagram>
