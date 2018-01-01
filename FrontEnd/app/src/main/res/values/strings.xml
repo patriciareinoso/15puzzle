@@ -4,4 +4,5 @@
     <string name="play">Play</string>
     <string name="help">Help</string>
     <string name="instructions">Display here the instructions of the game</string>
+    <string name="ready">Ready</string>
 </resources>

@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="puzzle.frontend.PuzzleActivity">
+    >
+
+    <puzzle.frontend.BoardView
+        android:id="@+id/Board"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="44dp"
+        android:padding="10dp"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintLeft_toLeftOf="parent"
+        custom:layout_constraintRight_toRightOf="parent"
+        custom:layout_constraintTop_toTopOf="parent"
+        custom:size="150"
+        android:layout_marginRight="16dp"
+         />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/ready"
+        custom:layout_constraintLeft_toLeftOf="parent"
+        custom:layout_constraintRight_toRightOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/Board" />
 
 </android.support.constraint.ConstraintLayout>
