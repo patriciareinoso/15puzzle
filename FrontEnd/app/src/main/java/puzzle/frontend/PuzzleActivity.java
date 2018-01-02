@@ -13,5 +13,6 @@ public class PuzzleActivity extends AppCompatActivity {
         Resources res = getResources();
         setContentView(R.layout.activity_puzzle);
         BoardView board = (BoardView) this.findViewById(R.id.Board);
+        //TileView tile = (TileView) this.findViewById(R.id.Tile);
     }
 }
