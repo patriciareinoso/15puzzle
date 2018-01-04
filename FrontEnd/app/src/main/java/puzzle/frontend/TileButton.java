@@ -72,4 +72,7 @@ public class TileButton extends android.support.v7.widget.AppCompatButton {
         mTileBounds = new RectF(left, top, right, bottom);
     }
 
+    public void setValue(int val){
+        value = val;
+    }
 }
