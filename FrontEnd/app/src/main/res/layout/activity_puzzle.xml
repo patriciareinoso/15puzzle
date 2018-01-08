@@ -25,10 +25,11 @@
     </GridView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ReadyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="solvePuzzle"
         android:text="@string/ready"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
