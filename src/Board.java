@@ -5,7 +5,7 @@ import tools.InvariantBrokenException;
 /**
  * Represents the board in a 15-puzzle Game.
  * 
- * @author Patricia Reinoso.
+ * @author Patricia Reinoso & Oscar Guillen
  */
 
 /**
@@ -16,7 +16,7 @@ import tools.InvariantBrokenException;
  * A board is considered as solved if all the tiles 
  * inside are in the correct position.
  */
-public class Board {
+public class Board implements Cloneable {
 
 	/**
 	 * The size of the board (equal to the number of tiles).
@@ -115,6 +115,24 @@ public class Board {
 	 */
 	public void setSolved(boolean solved) {
 		this.solved = solved;
+	}
+
+	/**
+	 * CHANGE
+	 * Catches the InvalidMovementException when an invalid movement is applied.
+	 * @param seq sequence of directions to move the empty space.
+	 */
+	public int getSpacePosition() {
+		return this.spacePosition;
+	}
+
+	/**
+	 * CHANGE
+	 * Catches the InvalidMovementException when an invalid movement is applied.
+	 * @param seq sequence of directions to move the empty space.
+	 */
+	public void setSpacePosition(int pos) {
+		this.spacePosition = pos;
 	}
 	
 	/**
@@ -334,6 +352,18 @@ public class Board {
 		}
 		return sb.toString();
 	}
+
+	@Override
+    protected Object clone() throws CloneNotSupportedException {
+    	Board cloned = (Board)super.clone();
+    	IntTile[] clonedTiles = new IntTile[SIZE];
+    	IntTile[] originalTiles = cloned.getTiles();
+    	int i;
+    	for (i = 0; i < SIZE; i++)
+    		clonedTiles[i] = (IntTile)originalTiles[i].clone();
+    	cloned.setTiles(clonedTiles);
+        return cloned;
+    }
 
 	public static void main(String[] args){
 		Board b1 = new Board();

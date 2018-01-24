@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * The movement are represented by the direction the empty space is going to
  * move.
  * 
- * @author Patricia
+ * @author Patricia Reinoso.
  *
  */
 
@@ -50,6 +50,15 @@ public class SolvingSequence {
 	 */
 	public void addMovement(Direction dir){
 		seq.add(dir);
+	}
+
+	/**
+	 * Add a movement to the sequence in a fixed position.
+	 * @param dir the direction to add to the sequence.
+	 * @param pos position in the sequence.
+	 */
+	public void addMovement(int pos, Direction dir){
+		seq.add(pos,dir);
 	}
 	
 	/**

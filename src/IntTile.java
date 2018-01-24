@@ -15,7 +15,7 @@ import tools.InvariantBrokenException;
  * The empty tile is represented as a IntTale with value 0.
  * 
  */
-public class IntTile extends GenericTile {
+public class IntTile extends GenericTile implements Cloneable {
 
 	/**
 	 * Minimum value of a IntTile.
@@ -89,6 +89,11 @@ public class IntTile extends GenericTile {
 	public String toString(){
 		return Integer.toString(getIntValue()) + " " + isOrdered();
 	}
+
+	@Override
+    protected Object clone() throws CloneNotSupportedException {
+    	return super.clone();
+    }
 	
 	public static void main(String[] args){
 		IntTile t1 = new IntTile(5,true);
