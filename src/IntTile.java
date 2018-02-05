@@ -94,6 +94,18 @@ public class IntTile extends GenericTile implements Cloneable {
     protected Object clone() throws CloneNotSupportedException {
     	return super.clone();
     }
+    
+    @Override
+    public boolean equals(Object other){
+        if (other == null)
+            return false;
+        if (other == this) 
+            return true;
+        if (!(other instanceof IntTile))
+            return false;
+        IntTile otherTile = (IntTile) other;
+        return this.getIntValue() == otherTile.getIntValue();
+    }
 	
 	public static void main(String[] args){
 		IntTile t1 = new IntTile(5,true);

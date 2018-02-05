@@ -18,7 +18,7 @@ public class BoardTreeNode extends GenericNode {
     /**
      * Fitness.
      */
-    private int fitness;
+    private float fitness;
 
     private SolvingSequence.Direction movement;
 
@@ -64,11 +64,11 @@ public class BoardTreeNode extends GenericNode {
         return val;
     }
 
-    public int getFitness() {
+    public float getFitness() {
         return this.fitness;
     }
 
-    public void setFitness(int value) {
+    public void setFitness(float value) {
         this.fitness = value;
     }
 
@@ -87,12 +87,15 @@ public class BoardTreeNode extends GenericNode {
     public static Comparator<BoardTreeNode> NodeFitness = new Comparator<BoardTreeNode>() {
 
         public int compare(BoardTreeNode n1, BoardTreeNode n2) {
+            float fitness1 = n1.getFitness();
+            float fitness2 = n2.getFitness();
 
-           int fitness1 = n1.getFitness();
-           int fitness2 = n2.getFitness();
+            if (fitness1 > fitness2) return 1;
+            if (fitness1 < fitness2) return -1;
+            return 0;
 
            /*For ascending order*/
-           return fitness1-fitness2;
+           //return fitness1-fitness2;
         }
     };
 

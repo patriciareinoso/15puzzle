@@ -15,6 +15,8 @@ import tools.InvariantBrokenException;
  * The empty space is represented as tile with value 0.
  * A board is considered as solved if all the tiles 
  * inside are in the correct position.
+ *
+ * Implement Cloneable interface.
  */
 public class Board implements Cloneable {
 
@@ -118,18 +120,16 @@ public class Board implements Cloneable {
 	}
 
 	/**
-	 * CHANGE
-	 * Catches the InvalidMovementException when an invalid movement is applied.
-	 * @param seq sequence of directions to move the empty space.
+	 * Getter for the spacePosition attribute
+	 * @return an integer of the position.
 	 */
 	public int getSpacePosition() {
 		return this.spacePosition;
 	}
 
 	/**
-	 * CHANGE
-	 * Catches the InvalidMovementException when an invalid movement is applied.
-	 * @param seq sequence of directions to move the empty space.
+	 * Setter value for the spacePosition attribute.
+	 * @param position where it will be set.
 	 */
 	public void setSpacePosition(int pos) {
 		this.spacePosition = pos;
@@ -353,6 +353,12 @@ public class Board implements Cloneable {
 		return sb.toString();
 	}
 
+	/**
+	 * Override cloning function of the Board object.  
+	 * Clone each tile of the array of IntTile.
+	 * @throws CloneNotSupportedException if it is not supported cloning
+	 * @return Cloned object.
+	 */
 	@Override
     protected Object clone() throws CloneNotSupportedException {
     	Board cloned = (Board)super.clone();
@@ -365,19 +371,26 @@ public class Board implements Cloneable {
         return cloned;
     }
 
-	public static void main(String[] args){
-		Board b1 = new Board();
-		System.out.println("B1 \n" + b1);
-		SolvingSequence seq = new SolvingSequence();
-		seq.addMovement(SolvingSequence.Direction.LEFT);
-		seq.addMovement(SolvingSequence.Direction.UP);
-		seq.addMovement(SolvingSequence.Direction.UP);
-		seq.addMovement(SolvingSequence.Direction.UP);
-		seq.addMovement(SolvingSequence.Direction.RIGHT);
-		seq.addMovement(SolvingSequence.Direction.DOWN);
-		System.out.println("Seq \n" + seq);
-		b1.applySolvingSequence(seq);
-		System.out.println("NEW \n" + b1);
-		System.out.println("B1 \n" + b1.isSolved());
+    /**
+	 * Override equals function for Board objects.  
+	 * Compare each tile of the IntTile array.
+	 * @param Object with which the comparison will be made
+	 * @return If there are equals or not.
+	 */
+    @Override
+	public boolean equals(Object other){
+	    if (other == null)
+	    	return false;
+	    if (other == this) 
+	    	return true;
+	    if (!(other instanceof Board))
+	    	return false;
+
+	    Board otherBoard = (Board)other;
+	    for (int i = 0 ; i < SIZE; i++) {
+	    	if (!tiles[i].equals(otherBoard.getTiles()[i]))
+	    		return false;
+	    }
+	    return true;
 	}
 }
