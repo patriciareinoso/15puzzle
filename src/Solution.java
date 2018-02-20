@@ -243,17 +243,17 @@ public class Solution {
         System.out.println("B1 \n" + b1);
         SolvingSequence seq = new SolvingSequence();
         seq.addMovement(SolvingSequence.Direction.LEFT);
-        seq.addMovement(SolvingSequence.Direction.UP);
-        seq.addMovement(SolvingSequence.Direction.UP);
-        seq.addMovement(SolvingSequence.Direction.UP);
-        seq.addMovement(SolvingSequence.Direction.RIGHT);
-        seq.addMovement(SolvingSequence.Direction.DOWN);
+        // seq.addMovement(SolvingSequence.Direction.UP);
+        // seq.addMovement(SolvingSequence.Direction.UP);
+        // seq.addMovement(SolvingSequence.Direction.UP);
+        // seq.addMovement(SolvingSequence.Direction.RIGHT);
+        // seq.addMovement(SolvingSequence.Direction.DOWN);
         //System.out.println("Seq \n" + seq);
         b1.applySolvingSequence(seq);
         System.out.println("INITIAL \n" + b1);
         //System.out.println("B1 \n" + b1.isSolved());
 
-        Solution s1 = new Solution("space");
+        Solution s1 = new Solution("manhattan");
         try {
             s1.solve(b1);
             System.out.println("I found a path! " + s1.getSequence().toString());

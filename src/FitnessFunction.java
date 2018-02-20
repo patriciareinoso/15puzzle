@@ -13,11 +13,13 @@ public class FitnessFunction {
 
     public static final float maxDisorder = 15.0f;
 
-    public static final float maxManhattan = 30.0f;
+    public static final float maxManhattan = 96.0f;
 
     public static final float maxSpace = 6.0f;
 
     private String heuristic;
+
+    private Board solved = new Board();
     
     public FitnessFunction (String heu) {
         heuristic = heu;
@@ -38,8 +40,9 @@ public class FitnessFunction {
     // Disorder Heuristic
     public float disorder(Board status) {
         int fitness = 0;
+        IntTile[] solved = solved.getTiles();
         for (int i = 0;i < status.SIZE ;i++) {
-            if (status.getTiles()[i].getIntValue() != i + 1)
+            if (status.getTiles()[i].getIntValue() != solved[i].getIntValue())
                 fitness++;
         }
         return (float)fitness / maxDisorder;
@@ -50,12 +53,13 @@ public class FitnessFunction {
     public float manhattanDistance(Board status) {
         int fitness = 0;
         IntTile[] puzzle = status.getTiles();
-        for (int i = 0;i < status.SIZE ;i++) {
-            if (puzzle[i].getIntValue() != i + 1) {
-                fitness += (Math.abs(puzzle[i].getIntValue()/status.SIZE - i/status.SIZE) + Math.abs(puzzle[i].getIntValue()%status.SIZE - i%status.SIZE));
+        IntTile[] solved = solved.getTiles();
+        for (int i = 0; i < status.SIZE; i++) {
+            if (puzzle[i].getIntValue() != solved[i].getIntValue()) {
+                fitness += (Math.abs(puzzle[i].getIntValue()/4 - i/4) + Math.abs(puzzle[i].getIntValue()%4 - i%4));
             }
         }
-        return (float) fitness; 
+        return (float) fitness / maxManhattan; 
     }
 
     // Space Position Heuristic
