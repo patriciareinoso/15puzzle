@@ -3,78 +3,62 @@ import java.util.concurrent.TimeUnit;
 import java.util.Collections;
 
 /**
- * Represents the fitness function for solving the 15-puzzle game.
+ * Represents the abstract fitness function for solving the 15-puzzle game.
  * 
  * @author Oscar Guillen
  *
  */
 
-public class FitnessFunction {
+/**
+ * 
+ * Class that represents an abtract class as basis for creating
+ * specific fitness function considering the heuristic. The fitness
+ * value will be a number between 0 and 1, it means that it must be
+ * normalized by using the max number of the worse case to obtain a 
+ * correct number between 0 - 1.
+ *
+ * Uses a solved puzzle as a comparison.
+ *
+ * Uses a max value to normalize the fitness value.
+ */
+public abstract class FitnessFunction {
 
-    public static final float maxDisorder = 15.0f;
+    /**
+     * The max value of the worse case.
+     */
+    private float max = 0.0f;
 
-    public static final float maxManhattan = 96.0f;
-
-    public static final float maxSpace = 6.0f;
-
-    private String heuristic;
-
+    /**
+     * The solved board.
+     */
     private Board solved = new Board();
-    
-    public FitnessFunction (String heu) {
-        heuristic = heu;
+
+    /**
+     * Abstract function used to calculate the fitness value.
+     */
+    public abstract float calcFitness(Board status);
+
+    /**
+     * Setter of the max value
+     * @param new max value
+    */
+    public void setMax(float value) {
+        max = value;
     }
 
-    public FitnessFunction () {
-        heuristic = "";
+    /**
+     * Getter for max value
+     * @return max value as float.
+     */
+    public float getMax() {
+        return max;
     }
 
-    public void setHeuristic (String heu) {
-        heuristic = heu;
-    }
-
-    public String getHeuristic () {
-        return heuristic;
-    }
-
-    // Disorder Heuristic
-    public float disorder(Board status) {
-        int fitness = 0;
-        IntTile[] solved = solved.getTiles();
-        for (int i = 0;i < status.SIZE ;i++) {
-            if (status.getTiles()[i].getIntValue() != solved[i].getIntValue())
-                fitness++;
-        }
-        return (float)fitness / maxDisorder;
-    }
-
-    // Manhattan Distance Heuristic
-    // PD: Check maximum sum
-    public float manhattanDistance(Board status) {
-        int fitness = 0;
-        IntTile[] puzzle = status.getTiles();
-        IntTile[] solved = solved.getTiles();
-        for (int i = 0; i < status.SIZE; i++) {
-            if (puzzle[i].getIntValue() != solved[i].getIntValue()) {
-                fitness += (Math.abs(puzzle[i].getIntValue()/4 - i/4) + Math.abs(puzzle[i].getIntValue()%4 - i%4));
-            }
-        }
-        return (float) fitness / maxManhattan; 
-    }
-
-    // Space Position Heuristic
-    public float spacePosition(Board status) {
-        int space = status.getSpacePosition();
-        return (float) (Math.abs(space/4 - 3) + Math.abs(space%4 - 3)) / maxSpace;
-    }
-
-    public float calcFitness(Board status) {
-        if (heuristic.equals("space"))
-            return spacePosition(status);
-        else if (heuristic.equals("manhattan"))
-            return manhattanDistance(status);
-        else if (heuristic.equals("disorder"))
-            return disorder(status);
-        return 0.0f;
+    /**
+     * Getter for the solved board
+     * @return solved board.
+     */
+    public Board getSolved() {
+        return solved;
     }
 }

@@ -65,7 +65,7 @@ public class GenericTile<T> {
 	
 	/**
 	 * Override equal method that indicate whether the tile is equal to other
-	 * object. 2 tiles are equal if their value is equal.
+	 * object. 2 tiles are equal if their values are equal.
 	 * 
 	 * @param obj the object the tile is compared to.
 	 * @return true is the object is considered equal. False otherwise.

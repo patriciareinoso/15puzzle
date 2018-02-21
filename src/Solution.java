@@ -34,16 +34,6 @@ public class Solution {
      * The fitness function to evaluate how close is to achieve the solution.
      */
     private FitnessFunction funct;
-    
-    /**
-     * Class constructor.
-     * Create an empty Tree of Boards, empty sequence and non-heuristic function
-     */
-    public Solution () {
-        solution = new BoardTree();
-        sequence = new SolvingSequence();
-        funct = new FitnessFunction();
-    }
 
     /**
      * Class constructor.
@@ -54,7 +44,7 @@ public class Solution {
     public Solution (String heu) {
         solution = new BoardTree();
         sequence = new SolvingSequence();
-        funct = new FitnessFunction(heu);
+        funct = FitnessFunctionFactory.getFunction(heu);
     }
 
     /**
@@ -67,7 +57,7 @@ public class Solution {
     public Solution (BoardTree initial, String heu) {
         solution = initial;
         sequence = new SolvingSequence();
-        funct = new FitnessFunction(heu);
+        funct = FitnessFunctionFactory.getFunction(heu);
     }
 
     /**
@@ -253,7 +243,7 @@ public class Solution {
         System.out.println("INITIAL \n" + b1);
         //System.out.println("B1 \n" + b1.isSolved());
 
-        Solution s1 = new Solution("manhattan");
+        Solution s1 = new Solution("Disorder");
         try {
             s1.solve(b1);
             System.out.println("I found a path! " + s1.getSequence().toString());

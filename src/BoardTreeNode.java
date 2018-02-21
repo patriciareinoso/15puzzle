@@ -11,15 +11,21 @@ import java.util.Comparator;
  * Board Node. Represents node which values are boards.
  * Destined to be used in a 15-puzzle solution.
  * Extends {@link GenericNode}.
+ *
+ * A fitness value of the board inside is added. Furthemore, a movement
+ * indicates the move into the puzzle to reach the actual node from the parent.
  * 
  */
 public class BoardTreeNode extends GenericNode {
 
     /**
-     * Fitness.
+     * Fitness value of tha actual board inside the node.
      */
     private float fitness;
 
+    /**
+     * Move applied to move from parent to actual node.
+     */
     private SolvingSequence.Direction movement;
 
     /**
@@ -64,10 +70,18 @@ public class BoardTreeNode extends GenericNode {
         return val;
     }
 
+    /**
+     * Return the fitness value.
+     * @return the fitness value
+     */
     public float getFitness() {
         return this.fitness;
     }
 
+    /**
+     * Setter for the fitness value.
+     * @param value the new fitness value.
+     */
     public void setFitness(float value) {
         this.fitness = value;
     }
@@ -76,14 +90,25 @@ public class BoardTreeNode extends GenericNode {
         return this.movement;
     }
 
+    /**
+     * Setter for move to get this node.
+     * @param value of the move.
+     */
     public void setMovement(SolvingSequence.Direction dir) {
         this.movement = dir;
     }
     
+    /**
+     * To string method that returns the node.
+     * @return a string with the desired format.
+     */
     public String toString(){
         return getBoardValue().toString();
     }
 
+    /**
+     * Comparator to compare two nodes.
+     */
     public static Comparator<BoardTreeNode> NodeFitness = new Comparator<BoardTreeNode>() {
 
         public int compare(BoardTreeNode n1, BoardTreeNode n2) {
@@ -93,9 +118,6 @@ public class BoardTreeNode extends GenericNode {
             if (fitness1 > fitness2) return 1;
             if (fitness1 < fitness2) return -1;
             return 0;
-
-           /*For ascending order*/
-           //return fitness1-fitness2;
         }
     };
 

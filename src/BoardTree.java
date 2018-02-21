@@ -56,6 +56,10 @@ public class BoardTree extends GenericTree {
         return val;
     }
     
+    /**
+     * To string method that returns the tree.
+     * @return a string with the desired format.
+     */
     public String toString(){
         return getBoardRoot().toString();
     }
