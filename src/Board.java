@@ -60,6 +60,36 @@ public class Board {
 	}
 	
 	/**
+	 * Class constructor.
+	 * Create {@link #SIZE} tiles, numbered from 1 to 15.
+	 * From a string of numbers separated by space.
+	 * The empty space is represented by the value 0.
+	 * The board may not be solved after creation.
+	 * @throws InvariantBrokenException if the board state after creation is not valid.
+	 */
+	public Board(String line) throws InvariantBrokenException{
+		String[] lineTiles = line.split(" ");
+		int i, val;
+		if (tiles.length != SIZE){
+			throw new InvariantBrokenException("Invariant broken.");
+		}
+		for (i = 0 ; i < SIZE ; i++ ){
+			val = Integer.parseInt(lineTiles[i]);
+			IntTile newTile = new IntTile(val, false);
+			if (val == 0 ){
+				spacePosition = i;
+			}
+			tiles[i] = newTile;
+			setTileOrdered(i);
+		}
+		isSolved();
+		if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		}
+	}
+
+	
+	/**
 	 * Getter of the list of tiles in the board.
 	 * @return the list of tiles.
 	 */
