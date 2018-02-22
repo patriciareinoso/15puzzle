@@ -1,8 +1,7 @@
 package tools;
 
 /**
- * <code>InvariantBrokenException</code> is raised when the invariant of a class is not true in
- * the current state of the instance (corresponding to an invalid or unsafe state)
+ * <code>InvalidMovementException</code> is raised when an invalid movement is tried.
  * @author Patricia
  */
 public class InvalidMovementException extends RuntimeException {

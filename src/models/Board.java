@@ -1,3 +1,4 @@
+package models;
 
 import tools.InvalidMovementException;
 import tools.InvariantBrokenException;
@@ -152,14 +153,9 @@ public class Board {
 	 * Catches the InvalidMovementException when an invalid movement is applied.
 	 * @param seq sequence of directions to move the empty space.
 	 */
-	public void applySolvingSequence (SolvingSequence seq){
+	public void applySolvingSequence (SolvingSequence seq) throws InvalidMovementException{
 		for (SolvingSequence.Direction dir : seq.getSeq()){
-			try{
-				moveEmptyTile(dir);
-			} catch (InvalidMovementException e){
-				System.out.println("Invalid sequence");
-			}
-			System.out.println(dir + "\n" + this);
+			moveEmptyTile(dir);
 		}
 	}
 	
@@ -169,7 +165,7 @@ public class Board {
 	 * @throws IllegalArgumentException if other direction than UP, DOWN,
 	 * 			LEFT, RIGHT is passed as parameter.
 	 */
-	public void moveEmptyTile(SolvingSequence.Direction dir) throws IllegalArgumentException {
+	public void moveEmptyTile(SolvingSequence.Direction dir) throws IllegalArgumentException, InvalidMovementException {
 		switch (dir) {
 			case UP:
 				moveUp();
@@ -335,6 +331,28 @@ public class Board {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Getter for the current position of the blank space.
+	 * @return the number of the position in the array of the board (0 .. 15).
+	 */
+	public int getSpacePosition(){
+		return spacePosition;
+	}
+	
+	/**
+	 * Setter for the current position of the blank space.
+	 * @param position new position of the current space.
+	 * @throws InvariantBrokenException if the invariant if broken when moving the 
+	 * 									empty space.
+	 */
+	public void setSpacePosition(int position) throws InvariantBrokenException{
+		spacePosition = position;
+		if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken when moving down.");
+		}
+		
 	}
 	
 	/**

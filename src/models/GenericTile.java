@@ -1,3 +1,4 @@
+package models;
 /**
  * Generic class for a Tile representation.
  * 
