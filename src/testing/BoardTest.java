@@ -205,4 +205,18 @@ public class BoardTest {
 		assertTrue(board.isSolved());
 		board.setSpacePosition(2);
 	}
+	
+	/**
+	 * Test for the {@link models.Board#applySolvingSequence(SolvingSequence)}.
+	 * Applying an empty sequence to a new created board.
+	 * The board should remain solved.
+	 */
+	@Test
+	public void testApplyEmptySequence(){
+		Board board = new Board();
+		assertTrue(board.isSolved());
+		SolvingSequence seq = new SolvingSequence();
+		board.applySolvingSequence(seq);
+		assertTrue(board.isSolved());
+	}
 }
