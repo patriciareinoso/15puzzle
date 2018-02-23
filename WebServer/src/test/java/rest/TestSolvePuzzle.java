@@ -17,8 +17,8 @@ You should have received a copy of the GNU Lesser General Public License
 along with the muDEBS platform. If not, see <http://www.gnu.org/licenses/>.
 
 Initial developer(s): Chantal Taconet
-Contributor(s): Denis Conan
-		& Oscar Guillen
+Contributor(s): Denis Conan &
+		Oscar Guillen
  */
 
 package rest;
@@ -53,6 +53,8 @@ public class TestSolvePuzzle {
 
 	private static HttpServer server;
 	private static WebTarget service;
+	private static WebTarget service2;
+	private static WebTarget service3;
 	private static WebTarget helloService; //to test hello
 	private static URI uri;
 	private static URI helloUri; // to test hello
@@ -77,8 +79,14 @@ public class TestSolvePuzzle {
 		helloUri = UriBuilder.fromUri(REST_URI+"/puzzle").build();
 		helloService = c.target(helloUri);
 
-		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve").build();
+		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/space").build();
 		service = c.target(uri);
+
+		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/disorder").build();
+		service2 = c.target(uri);
+	
+		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/manhattan").build();
+		service3 = c.target(uri);
 
 		Thread.sleep(500);
 	}
@@ -109,12 +117,37 @@ public class TestSolvePuzzle {
 		}
 
 		String solution = "";
-		SolvingSequence seq = new SolvingSequence();
-		seq.addMovement(SolvingSequence.Direction.LEFT);
-		seq.addMovement(SolvingSequence.Direction.UP);
+		String board = "1 2 3 4 5 6 7 8 9 10 0 12 13 14 11 15";
 		
+		System.out.println("\nTest 1\n");
 		Invocation.Builder invocationBuilder = service.request(MediaType.APPLICATION_XML);
-		Response response = invocationBuilder.post(Entity.entity(seq, MediaType.APPLICATION_XML),Response.class);
+		Response response = invocationBuilder.post(Entity.entity(board, MediaType.APPLICATION_XML),Response.class);
+		
+		System.out.println(response);
+
+		if(response.getStatus() == 200) {
+			solution = response.readEntity(String.class);
+		}
+
+		System.out.println("Solution: " + solution);
+	
+		System.out.println("#######################################");
+		System.out.println("\nTest 2\n");
+		invocationBuilder = service2.request(MediaType.APPLICATION_XML);
+		response = invocationBuilder.post(Entity.entity(board, MediaType.APPLICATION_XML),Response.class);
+		
+		System.out.println(response);
+
+		if(response.getStatus() == 200) {
+			solution = response.readEntity(String.class);
+		}
+
+		System.out.println("Solution: " + solution);
+
+		System.out.println("#######################################");
+		System.out.println("\nTest 3\n");
+		invocationBuilder = service3.request(MediaType.APPLICATION_XML);
+		response = invocationBuilder.post(Entity.entity(board, MediaType.APPLICATION_XML),Response.class);
 		
 		System.out.println(response);
 

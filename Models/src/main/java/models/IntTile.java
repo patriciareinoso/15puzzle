@@ -1,5 +1,7 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
 import tools.InvariantBrokenException;
 
 /**

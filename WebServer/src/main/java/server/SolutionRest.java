@@ -61,18 +61,68 @@ public final class SolutionRest {
 	private String fileName = "src/main/resources/puzzle.bd";
 
 	/**
-	 * solve a puzzle
+	 * solve a puzzle using space position heuristic
 	 * 
+	 * @param line that represents a puzzle state
 	 * @return the moves to reach the solution as a String
 	 */
 	@POST
-	@Path("/solve")
+	@Path("/solve/space")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
-	public String solve(SolvingSequence seq) {
-		Board start = new Board();
-		start.applySolvingSequence(seq);
+	public String solveSpace(String line) throws JAXBException {
+		Board start = new Board(line);
+		Solution s1 = new Solution("Space");
+		System.out.println("\nSpace Heuristic");
+		System.out.println("\nPuzzle to solve: \n" + start.toString());
+		try {
+		    s1.solve(start);
+		    System.out.println("I found a path! " + s1.getSequence().toString());
+		} catch (Exception e) {
+		  /* ... */
+		}
+		return s1.getSequence().toString();
+	}
+
+	/**
+	 * solve a puzzle using disorder heuristic
+	 * 
+	 * @param line that represents a puzzle state
+	 * @return the moves to reach the solution as a String
+	 */
+	@POST
+	@Path("/solve/disorder")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	public String solveDisorder(String line) throws JAXBException {
+		Board start = new Board(line);
 		Solution s1 = new Solution("Disorder");
+		System.out.println("\nDisorder Heuristic");
+		System.out.println("\nPuzzle to solve: \n" + start.toString());
+		try {
+		    s1.solve(start);
+		    System.out.println("I found a path! " + s1.getSequence().toString());
+		} catch (Exception e) {
+		  /* ... */
+		}
+		return s1.getSequence().toString();
+	}
+
+	/**
+	 * solve a puzzle using manhattan heuristic
+	 * 
+	 * @param line that represents a puzzle state
+	 * @return the moves to reach the solution as a String
+	 */
+	@POST
+	@Path("/solve/manhattan")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	public String solveManhattan(String line) throws JAXBException {
+		Board start = new Board(line);
+		Solution s1 = new Solution("Manhattan");
+		System.out.println("\nManhattan Heuristic");
+		System.out.println("\nPuzzle to solve: \n" + start.toString());
 		try {
 		    s1.solve(start);
 		    System.out.println("I found a path! " + s1.getSequence().toString());
@@ -93,6 +143,21 @@ public final class SolutionRest {
 	public String getHello() {
 		System.out.println("receiving a Hello");
 		return "Server Puzzle Solver online, over...";
+	}
+
+	@GET
+	@Path("/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Board exampleJSON() {
+		
+		return new Board();
+	}
+	
+	@GET
+	@Path("/sequence/xml")
+	@Produces(MediaType.APPLICATION_XML)
+	public SolvingSequence exampleSeqXML() {
+		return new SolvingSequence();
 	}
 	
 }
