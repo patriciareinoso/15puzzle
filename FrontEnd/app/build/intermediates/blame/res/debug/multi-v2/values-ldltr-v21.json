@@ -16,6 +16,21 @@
             ]
         },
         {
+            "outputFile": "/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "/home/oscar/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ae0c6fac023b2cc3ea5af2ac80943589/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/home/patty/AndroidStudioProjects/FrontEnd/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {

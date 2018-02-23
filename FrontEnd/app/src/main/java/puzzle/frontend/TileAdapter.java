@@ -246,7 +246,8 @@ public class TileAdapter extends BaseAdapter {
         sb.append("");
         for (int i = 0; i < SIZE; i++) {
             sb.append(tiles[i]);
-            sb.append("  ");
+            if (i != SIZE - 1)
+                sb.append(" ");
         }
         return sb.toString();
     }

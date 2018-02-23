@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/patty/AndroidStudioProjects/FrontEnd/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/home/patty/AndroidStudioProjects/FrontEnd/app/src/debug/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/src/debug/jniLibs"/></dataSet></merger>

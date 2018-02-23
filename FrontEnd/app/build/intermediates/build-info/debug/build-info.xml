@@ -3,61 +3,43 @@
     abi="x86"
     api-level="27"
     build-mode="COLD"
-    density="xhdpi"
+    density="560dpi"
     format="10"
-    ir-eligibility="R_CLASS_CHANGE"
+    ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1517525369393"
+    timestamp="1519415175931"
     token="-4413916409843780236"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="23531" />
+        duration="2503" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="822" />
+        duration="431" />
     <task
         name="verifier"
-        duration="285" />
+        duration="176" />
 
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
     <artifact
         location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/outputs/apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1517522151917"
+        timestamp="1519410768273"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
             location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
@@ -89,30 +71,12 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1517525369393"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1519415175931"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
         <artifact
             location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/oscar/Documents/TSP/CSC7336/project/15puzzle/FrontEnd/app/build/outputs/apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

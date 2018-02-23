@@ -71,15 +71,16 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveSpace(String line) throws JAXBException {
-		Board start = new Board(line);
-		Solution s1 = new Solution("Space");
-		System.out.println("\nSpace Heuristic");
-		System.out.println("\nPuzzle to solve: \n" + start.toString());
 		try {
+		    Board start = new Board(line);
+		    Solution s1 = new Solution("Space");
+		    System.out.println("\nSpace Heuristic");
+		    System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
 		    System.out.println("I found a path! " + s1.getSequence().toString());
 		} catch (Exception e) {
-		  /* ... */
+			System.out.println("Exception cached: " + e.toString());
+            e.printStackTrace();
 		}
 		return s1.getSequence().toString();
 	}
@@ -95,15 +96,16 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveDisorder(String line) throws JAXBException {
-		Board start = new Board(line);
-		Solution s1 = new Solution("Disorder");
-		System.out.println("\nDisorder Heuristic");
-		System.out.println("\nPuzzle to solve: \n" + start.toString());
 		try {
+			Board start = new Board(line);
+			Solution s1 = new Solution("Disorder");
+			System.out.println("\nDisorder Heuristic");
+			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
 		    System.out.println("I found a path! " + s1.getSequence().toString());
 		} catch (Exception e) {
-		  /* ... */
+			System.out.println("Exception cached: " + e.toString());
+            e.printStackTrace();
 		}
 		return s1.getSequence().toString();
 	}
@@ -119,15 +121,16 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveManhattan(String line) throws JAXBException {
-		Board start = new Board(line);
-		Solution s1 = new Solution("Manhattan");
-		System.out.println("\nManhattan Heuristic");
-		System.out.println("\nPuzzle to solve: \n" + start.toString());
 		try {
+			Board start = new Board(line);
+			Solution s1 = new Solution("Manhattan");
+			System.out.println("\nManhattan Heuristic");
+			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
 		    System.out.println("I found a path! " + s1.getSequence().toString());
 		} catch (Exception e) {
-		  /* ... */
+			System.out.println("Exception cached: " + e.toString());
+            e.printStackTrace();
 		}
 		return s1.getSequence().toString();
 	}
