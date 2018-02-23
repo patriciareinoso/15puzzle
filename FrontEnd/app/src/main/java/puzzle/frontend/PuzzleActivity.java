@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -150,7 +151,11 @@ public class PuzzleActivity extends AppCompatActivity {
                   }
                 });
 
-                OkHttpClient client = httpClient.build();
+                OkHttpClient client = httpClient
+                        .connectTimeout(100000, TimeUnit.SECONDS)
+                        .writeTimeout(10, TimeUnit.SECONDS)
+                        .readTimeout(100000, TimeUnit.SECONDS)
+                        .build();
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(URL)
                         .addConverterFactory(ScalarsConverterFactory.create())
@@ -159,7 +164,7 @@ public class PuzzleActivity extends AppCompatActivity {
 
                 service = retrofit.create(RestService.class);
 
-                callSolve = service.solveSpace(tiles.toString());
+                callSolve = service.solveDisorder(tiles.toString());
 
                 System.out.println(callSolve.request().toString());
 
@@ -195,10 +200,6 @@ public class PuzzleActivity extends AppCompatActivity {
             applySolution(new LinkedList<String>(Arrays.asList(result.split(" "))));
         }
     }
-
-    private final static int bigPause = 500;
-
-    private final static int littlePause = 100;
 
     private void applySolution(final List<String> moves) {
 
@@ -242,9 +243,9 @@ public class PuzzleActivity extends AppCompatActivity {
                             applySolution(moves);
                         }
                     }
-                }, littlePause);
+                }, 100);
             }
-        }, bigPause);
+        }, 600);
     }
 
 

@@ -71,9 +71,9 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveSpace(String line) throws JAXBException {
+		Solution s1 = new Solution("Space");
 		try {
 		    Board start = new Board(line);
-		    Solution s1 = new Solution("Space");
 		    System.out.println("\nSpace Heuristic");
 		    System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
@@ -96,9 +96,9 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveDisorder(String line) throws JAXBException {
+		Solution s1 = new Solution("Disorder");
 		try {
 			Board start = new Board(line);
-			Solution s1 = new Solution("Disorder");
 			System.out.println("\nDisorder Heuristic");
 			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
@@ -121,9 +121,9 @@ public final class SolutionRest {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
 	public String solveManhattan(String line) throws JAXBException {
+		Solution s1 = new Solution("Manhattan");
 		try {
 			Board start = new Board(line);
-			Solution s1 = new Solution("Manhattan");
 			System.out.println("\nManhattan Heuristic");
 			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
