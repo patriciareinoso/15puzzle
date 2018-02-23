@@ -46,6 +46,17 @@ public class IntTileTest {
 	
 	/**
 	 * Test for the {@link models.IntTile#setValue(Object)} constructor.
+	 * The function sets a correct value
+	 */
+	@Test
+	public void testSetValue(){
+		IntTile tile = new IntTile(5,false);
+		tile.setValue(7);
+		assertTrue(tile.getIntValue()==7);
+	}
+	
+	/**
+	 * Test for the {@link models.IntTile#setValue(Object)} constructor.
 	 * Tile values should be greater than {@link models.IntTile#MIN}.
 	 */
 	@Test (expected=IllegalArgumentException.class)
