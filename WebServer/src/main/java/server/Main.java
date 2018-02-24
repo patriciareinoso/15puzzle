@@ -17,8 +17,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with the muDEBS platform. If not, see <http://www.gnu.org/licenses/>.
 
 Initial developer(s): Chantal Taconet
-Contributor(s): Denis Conan
+Contributor(s): Denis Conan &
 		Oscar Guillen
+
+@author Chantal Taconet, Denis Conan & Oscar Guillen
  */
 package server;
 

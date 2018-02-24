@@ -381,8 +381,9 @@ public class Board implements Cloneable {
 
 	/**
 	 * Check if the amount of tiles in the tile list {@link #tiles} is equal
-	 * to {@link #SIZE}. 
-	 * Check that each tile is not null and is a valid tile.
+	 * to {@link #SIZE}. (1)
+	 * Check that each tile is not null. (2)
+	 * Check if the board is solvable. (3)
 	 * @return true if the conditions are met. False otherwise.
 	 */
 	public boolean invariant(){
@@ -392,7 +393,7 @@ public class Board implements Cloneable {
 				return false;
 			}
 		}
-		if (isSolved()!=getSolved()){
+		if (!canBeSolved()) {
 			System.out.println("2");
 			return false;
 		}

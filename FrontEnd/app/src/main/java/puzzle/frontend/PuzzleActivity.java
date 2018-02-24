@@ -99,8 +99,6 @@ public class PuzzleActivity extends AppCompatActivity {
                     //updateView(space, position);
                     tiles.getView(position, board.getChildAt(position), board);
                     tiles.getView(space, board.getChildAt(space), board);
-                    tiles.addMovement(space, position);
-                    Log.i("Solution " , String.valueOf(tiles.getSolution()));
                     Log.i("Tiles " , tiles.toString());
                 }
                 else {
@@ -111,9 +109,10 @@ public class PuzzleActivity extends AppCompatActivity {
     }
 
     /**
-     * Called when the user taps the Ready button
-     * TEMPORARY IMPLEMENTATION. Only a simulation for the moment.
+     * Called when the user taps the Ready button.
+     * Execute thread that make web server request.
      * @param view parent view.
+     *
      */
     public void solvePuzzle(View view) {
         Button button = (Button) findViewById(R.id.ReadyButton);
@@ -193,6 +192,7 @@ public class PuzzleActivity extends AppCompatActivity {
             if(result == null)
             {
                 System.out.println("Error... contact developers!");
+                return;
             }
             Button button = (Button) findViewById(R.id.ReadyButton);
             button.setClickable(true);

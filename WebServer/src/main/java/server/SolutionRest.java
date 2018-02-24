@@ -18,7 +18,9 @@ along with the muDEBS platform. If not, see <http://www.gnu.org/licenses/>.
 
 Initial developer(s): Chantal Taconet
 Contributor(s): Denis Conan &
-		Oscar Guillen
+				Oscar Guillen
+				
+@author Chantal Taconet, Denis Conan & Oscar Guillen
  */
 package server;
 
@@ -77,7 +79,7 @@ public final class SolutionRest {
 		    System.out.println("\nSpace Heuristic");
 		    System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
-		    System.out.println("I found a path! " + s1.getSequence().toString());
+		    System.out.println("I found a path! " + s1.getSequence().toString() + " Opened states: " + Integer.toString(s1.getOpened()));
 		} catch (Exception e) {
 			System.out.println("Exception cached: " + e.toString());
             e.printStackTrace();
@@ -102,7 +104,7 @@ public final class SolutionRest {
 			System.out.println("\nDisorder Heuristic");
 			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
-		    System.out.println("I found a path! " + s1.getSequence().toString());
+		    System.out.println("I found a path! " + s1.getSequence().toString() + " Opened states: " + Integer.toString(s1.getOpened()));
 		} catch (Exception e) {
 			System.out.println("Exception cached: " + e.toString());
             e.printStackTrace();
@@ -127,7 +129,7 @@ public final class SolutionRest {
 			System.out.println("\nManhattan Heuristic");
 			System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
-		    System.out.println("I found a path! " + s1.getSequence().toString());
+		    System.out.println("I found a path! " + s1.getSequence().toString() + " Opened states: " + Integer.toString(s1.getOpened()));
 		} catch (Exception e) {
 			System.out.println("Exception cached: " + e.toString());
             e.printStackTrace();

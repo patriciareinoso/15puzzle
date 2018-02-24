@@ -192,44 +192,6 @@ public class TileAdapter extends BaseAdapter {
     }
 
     /**
-     * TEMPORARY METHOD. Used to simulate a solution to the puzzle.
-     * Everytime the user moves a tile, the movement is recorded as a direction.
-     * Update the solution list. The directions are stored with respect to the blank space.
-     * @param spacePosition the current position of the blank space.
-     * @param otherPosition the new position of the blank space.
-     */
-    public void addMovement(int spacePosition, int otherPosition){
-        int dif = spacePosition - otherPosition;
-        Direction dir = null;
-        switch (dif){
-            case -4:
-                dir = Direction.UP;
-                break;
-            case -1:
-                dir = Direction.LEFT;
-                break;
-            case 1:
-                dir = Direction.RIGHT;
-                break;
-
-            case 4:
-                dir = Direction.DOWN;
-                break;
-            default:
-                Log.i("ERROR MOVING " , Integer.toString((Integer)getItem(otherPosition)));
-        }
-        solution.add(0,dir);
-    }
-
-    /**
-     * TEMPORARY METHOD. Returns the solution to the puzzle.
-     * @return the list of directions the blank space should be moved.
-     */
-    public ArrayList<Direction> getSolution(){
-        return solution;
-    }
-
-    /**
      * Return the current state of the board as an array of integers.
      * @return the state of the board.
      */

@@ -36,6 +36,10 @@ public class Solution {
      * The fitness function to evaluate how close is to achieve the solution.
      */
     private FitnessFunction funct;
+	/**
+     * Store the number of opened states.
+     */
+    private int opened = 0;
 
     /**
      * Class constructor.
@@ -76,6 +80,29 @@ public class Solution {
      */
     public BoardTree getSolution () {
         return solution;
+    }
+
+	/**
+     * Setter of opened values.
+     * @param new value
+     */
+    public void setOpened (int value) {
+        opened = value;
+    }
+
+	/**
+     * Adder of opened values.
+     */
+    public void addOpened () {
+        opened++;
+    }
+
+	/**
+     * Getter of opened states number.
+     * @return number of opened states.
+     */
+    public int getOpened () {
+        return opened;
     }
 
     /**
@@ -179,6 +206,7 @@ public class Solution {
         routes.setRoot(root);
         
         opened.add(root);
+		addOpened();
 
         //System.out.println("Root opened");
 
@@ -196,12 +224,13 @@ public class Solution {
             ArrayList<BoardTreeNode> successors = getMovements(actual);
             for (BoardTreeNode suc : successors) {
 
-		if (actual.isAncestor(suc.getBoardValue()))
-			continue;
+				if (actual.isAncestor(suc.getBoardValue()))
+					continue;
 		
                 suc.setFitness(funct.calcFitness(suc.getBoardValue()));
 
-                /*int indexOpened = opened.indexOf(suc);
+                /*
+				int indexOpened = opened.indexOf(suc);
                 //System.out.println("Opened: " + indexOpened + "\n");
                 if (indexOpened >= 0) {
                     //System.out.println("I'm opened.\n");
@@ -225,10 +254,11 @@ public class Solution {
 
                 if (indexClosed != -1)
                   closed.remove(indexClosed);
-		*/
+				*/
 
                 actual.addChild(suc);
                 opened.add(suc);
+				addOpened();
                 //System.out.println("I add. " + suc.getFitness() +  "\n");
 
             }
