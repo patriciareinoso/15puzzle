@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>220</y>
+      <w>310</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>Board
+--
+SIZE : int
+solved : boolean
+spacePosition : int
+
+--
+Board()
+Board(s: string)
+getSpacePosition(): int
+setSpacePosition(position: int)
+getTiles(): [IntTile]
+setTiles(t: [IntTile])
+isSolved(): boolean
+setSolved(b: boolean)
+moveEmptyTile(d: Direction)
+-moveRight()
+-moveLeft()
+-moveDown()
+-moveUp()
+setTileOrdered(position: int)
+invariant() : boolean
+toString(): string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>460</x>
+      <y>350</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;- 
+                            16</panel_attributes>
+    <additional_attributes>30;50;190;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>650</x>
+      <y>280</y>
+      <w>300</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>IntTile
+
+--
+MIN: int
+MAX: int
+TOTAL: int
+
+--
+IntTile(value: int, ordered: boolean)
+setValue(value: int)
+getIntValue()
+invariant(): boolean
+toString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>690</y>
+      <w>240</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>SolvingSequence
+--
+-
+--
+SolvingSequence()
+getSeq(): [Direction]
+setSeq([Direction])
+addMovement(d: Direction)
+getLength(): int
+toString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>420</x>
+      <y>750</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;120;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>540</x>
+      <y>710</y>
+      <w>140</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Direction
+--
+UP
+DOWN
+LEFT
+RIGHT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>580</y>
+      <w>90</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+applies &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>40</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Generic&gt;&gt;
+GenericTile&lt;T&gt;
+--
+value: T
+isOrdered: boolean
+--
+GenericTile(value: T, ordered: boolean)
+getValue(): T
+setValue(value : T)
+isOrdered(): boolean
+setOrdered(b: boolean)
+equals(o: Object)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>220</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
