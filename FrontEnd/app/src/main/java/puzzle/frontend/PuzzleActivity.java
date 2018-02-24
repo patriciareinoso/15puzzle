@@ -197,7 +197,13 @@ public class PuzzleActivity extends AppCompatActivity {
             Button button = (Button) findViewById(R.id.ReadyButton);
             button.setClickable(true);
             board.setEnabled(true);
-            applySolution(new LinkedList<String>(Arrays.asList(result.split(" "))));
+            if (result.length() == 0)
+                System.out.println("No solution!!!");
+            else
+            {
+                applySolution(new LinkedList<String>(Arrays.asList(result.split(" "))));
+            }
+
         }
     }
 
