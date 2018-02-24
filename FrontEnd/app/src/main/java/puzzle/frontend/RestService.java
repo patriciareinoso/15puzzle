@@ -24,13 +24,13 @@ public interface RestService {
     Call<String> hello();
 
     /**
-     * Service that solve the puzzle using the space heuristic
+     * Service that solve the puzzle using the linear heuristic
      * @param board start puzzle to be solved
      * @return moves to get the solution
      */
-    @POST("MyServer/puzzle/solve/space")
+    @POST("MyServer/puzzle/solve/linear")
     @Headers({ "Content-Type: application/json","Accept: application/json"})
-    Call<String> solveSpace(@Body String board);
+    Call<String> solveLinear(@Body String board);
 
     /**
      * Service that solve the puzzle using the disorder heuristic

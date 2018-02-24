@@ -81,7 +81,7 @@ public class TestSolvePuzzle {
 		helloUri = UriBuilder.fromUri(REST_URI+"/puzzle").build();
 		helloService = c.target(helloUri);
 
-		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/space").build();
+		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/linear").build();
 		service = c.target(uri);
 
 		uri = UriBuilder.fromUri(REST_URI+"/puzzle/solve/disorder").build();
@@ -119,7 +119,7 @@ public class TestSolvePuzzle {
 		}
 
 		String solution = "";
-		String board = "1 2 3 4 5 6 7 8 9 10 0 12 13 14 11 15";
+		String board = "0 2 3 4 1 5 6 8 9 11 7 12 13 10 14 15";
 		
 		System.out.println("\nTest 1\n");
 		Invocation.Builder invocationBuilder = service.request(MediaType.APPLICATION_XML);

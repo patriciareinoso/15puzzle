@@ -40,6 +40,15 @@ public class Solution {
      * Store the number of opened states.
      */
     private int opened = 0;
+	/**
+     * Store the max depth reached.
+     */
+    private int max_depth = 0;
+
+	/**
+     * Max number of iterations
+     */
+    private static final int MAX_ITER = 200;
 
     /**
      * Class constructor.
@@ -103,6 +112,22 @@ public class Solution {
      */
     public int getOpened () {
         return opened;
+    }
+
+	/**
+     * Setter of depth value.
+     * @param new value
+     */
+    public void setMaxDepth (int value) {
+        max_depth = value;
+    }
+
+	/**
+     * Getter of opened states number.
+     * @return number of opened states.
+     */
+    public int getMaxDepth () {
+        return max_depth;
     }
 
     /**
@@ -196,8 +221,10 @@ public class Solution {
 			return;
 		}
 
+		int iterations = 0;
         BoardTree routes = new BoardTree();
         BoardTreeNode root = new BoardTreeNode();
+		root.setDepth(0);
 
         ArrayList<BoardTreeNode> opened = new ArrayList<BoardTreeNode>();
         ArrayList<BoardTreeNode> closed = new ArrayList<BoardTreeNode>();
@@ -210,11 +237,12 @@ public class Solution {
 
         //System.out.println("Root opened");
 
-        while(opened.size() > 0) {
+        while(opened.size() > 0 && iterations <= MAX_ITER) {
 
             BoardTreeNode actual = opened.remove(0);
-            //System.out.println("Actual: Fitness " + Float.toString(actual.getFitness()) + "\n " + actual.getBoardValue());
-            TimeUnit.SECONDS.sleep(2);
+
+			if (actual.getDepth() > getMaxDepth())
+				setMaxDepth(actual.getDepth());
 
             if (actual.getBoardValue().isSolved()) {
                 findPath(actual);
@@ -224,25 +252,23 @@ public class Solution {
             ArrayList<BoardTreeNode> successors = getMovements(actual);
             for (BoardTreeNode suc : successors) {
 
-				if (actual.isAncestor(suc.getBoardValue()))
+				// If it is in my way, I'll skip it
+				if (actual.isAncestor(suc.getBoardValue())) {
 					continue;
+				}
 		
                 suc.setFitness(funct.calcFitness(suc.getBoardValue()));
 
-                /*
+                
 				int indexOpened = opened.indexOf(suc);
-                //System.out.println("Opened: " + indexOpened + "\n");
                 if (indexOpened >= 0) {
-                    //System.out.println("I'm opened.\n");
                     BoardTreeNode node = opened.get(indexOpened);
                     if (node.getFitness() <= suc.getFitness())
                         continue;
                 }
 
                 int indexClosed = closed.indexOf(suc);
-                //System.out.println("Closed: " + indexClosed + "\n");
                 if (indexClosed >= 0) {
-                    //System.out.println("I'm closed.\n");
                     BoardTreeNode node = closed.get(indexClosed);
                     if (node.getFitness() <= suc.getFitness())
                         continue;
@@ -254,9 +280,10 @@ public class Solution {
 
                 if (indexClosed != -1)
                   closed.remove(indexClosed);
-				*/
+				
 
                 actual.addChild(suc);
+				suc.setDepth(actual.getDepth() + 1);
                 opened.add(suc);
 				addOpened();
                 //System.out.println("I add. " + suc.getFitness() +  "\n");
@@ -265,6 +292,7 @@ public class Solution {
 
             closed.add(actual);
             Collections.sort(opened, BoardTreeNode.NodeFitness);
+			iterations++;
         }
 
     }

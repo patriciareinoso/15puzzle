@@ -63,7 +63,7 @@ public final class SolutionRest {
 	private String fileName = "src/main/resources/puzzle.bd";
 
 	/**
-	 * solve a puzzle using space position heuristic
+	 * solve a puzzle using linear position heuristic
 	 * 
 	 * @param line that represents a puzzle state
 	 * @return the moves to reach the solution as a String
@@ -77,6 +77,31 @@ public final class SolutionRest {
 		try {
 		    Board start = new Board(line);
 		    System.out.println("\nSpace Heuristic");
+		    System.out.println("\nPuzzle to solve: \n" + start.toString());
+		    s1.solve(start);
+		    System.out.println("I found a path! " + s1.getSequence().toString() + " Opened states: " + Integer.toString(s1.getOpened()));
+		} catch (Exception e) {
+			System.out.println("Exception cached: " + e.toString());
+            e.printStackTrace();
+		}
+		return s1.getSequence().toString();
+	}
+	
+	/**
+	 * solve a puzzle using linear position heuristic
+	 * 
+	 * @param line that represents a puzzle state
+	 * @return the moves to reach the solution as a String
+	 */
+	@POST
+	@Path("/solve/linear")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON })
+	public String solveLinear(String line) throws JAXBException {
+		Solution s1 = new Solution("Linear");
+		try {
+		    Board start = new Board(line);
+		    System.out.println("\nLinear Heuristic");
 		    System.out.println("\nPuzzle to solve: \n" + start.toString());
 		    s1.solve(start);
 		    System.out.println("I found a path! " + s1.getSequence().toString() + " Opened states: " + Integer.toString(s1.getOpened()));

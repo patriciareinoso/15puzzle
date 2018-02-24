@@ -24,7 +24,7 @@ public class FitnessFunctionFactory {
     /**
      * enum which represents the heuristic name.
      */
-    public enum Heuristic {Space, Disorder, Manhattan};
+    public enum Heuristic {Linear, Disorder, Manhattan, Space};
 
     /**
      * Return a build fitness function depending on the heuristic received.
@@ -33,12 +33,14 @@ public class FitnessFunctionFactory {
      */
     public static FitnessFunction getFunction(String name) {
         switch (Heuristic.valueOf(name)) {
-            case Space:
-                return new FunctionSpace();
+            case Linear:
+                return new FunctionLinear();
             case Disorder:
                 return new FunctionDisorder();
             case Manhattan:
                 return new FunctionManhattan();
+	    case Space:
+                return new FunctionSpace();
         }
         throw new IllegalArgumentException("The name function " + name + " is not recognized.");
     }

@@ -28,6 +28,10 @@ public class GenericNode<T> {
      * Generic node that represent the parent of the actual node.
      */
     protected GenericNode<T> parent;
+    /**
+     * Depth of the node in the tree
+     */
+    protected int depth;
 
     /**
      * Empty Constructor of a generic Tree Node.
@@ -122,6 +126,22 @@ public class GenericNode<T> {
     }
 
     /**
+     * Getter of the depth
+     * @return Value of the node 
+     */
+    public int getDepth() {
+        return this.depth;
+    }
+
+    /**
+     * Setter of the depth
+     * @param new value
+     */
+    public void setDepth(int value) {
+        this.depth = value;
+    }
+
+    /**
      * Indicate if the actual node is a leaf. It means that it has not
      * children.
      * @return true if it is a leaf, false otherwise.
@@ -159,17 +179,14 @@ public class GenericNode<T> {
      * @return true if it is found, false otherwise
      */
     public boolean isAncestor(T value) {
-        boolean result = false;
-        if (getValue().equals(value))
-            return true;
-        else {
-            for (GenericNode<T> child : this.getChildren()) {
-                result = result || child.isAncestor(value);
-                if (result)
-                    return true;
-            }
-        }
-        return result;
+	GenericNode<T> parent = getParent();
+	if ( getParent() != null) {
+		if (parent.getValue().equals(value))
+            		return true;
+		else
+			return parent.isAncestor(value);
+	}
+        return false;
 
     }
 
