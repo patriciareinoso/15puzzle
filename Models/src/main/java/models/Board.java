@@ -335,6 +335,51 @@ public class Board implements Cloneable {
 	}
 
 	/**
+	 * Check whether a puzzle can be solved by calculating the number of inverted
+	 * positions and position of blank space.
+	 *
+	 * For even puzzles, blank on even && even inverions or blank on odd and odd inversions
+	 * means that can be solved.
+     *
+	 * For odd puzzles, even number of inversions means solvable.
+	 * @return true if it can be solved, false otherwise.
+	 */
+	public boolean canBeSolved() {
+		int inversions = 0;
+		int size = (int) Math.sqrt(SIZE);
+		int row = 0;
+		int blankRow = 0;
+
+		for (int i = 0; i < SIZE; i++)
+		{
+		    if (i % size == 0) {
+		        row++;
+		    }
+		    if (tiles[i].getIntValue() == 0) {
+		        blankRow = row;
+		        continue;
+		    }
+		    for (int j = i + 1; j < SIZE; j++)
+		    {
+		        if (tiles[i].getIntValue() > tiles[j].getIntValue() && tiles[j].getIntValue() != 0)
+		        {
+		            inversions++;
+		        }
+		    }
+		}
+
+		// even puzzle
+		if (size % 2 == 0) {
+		    if (blankRow % 2 == 0)
+		        return inversions % 2 == 0;
+		    else
+		        return inversions % 2 != 0;
+		}
+		// odd puzzle
+		return inversions % 2 == 0;
+	}
+
+	/**
 	 * Check if the amount of tiles in the tile list {@link #tiles} is equal
 	 * to {@link #SIZE}. 
 	 * Check that each tile is not null and is a valid tile.

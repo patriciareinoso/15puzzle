@@ -37,6 +37,8 @@ public class FunctionSpace extends FitnessFunction {
      */
     public float calcFitness(Board status) {
         int space = status.getSpacePosition();
+	float result = (float) (Math.abs(space/4 - 3) + Math.abs(space%4 - 3));
+	System.out.println("value = " + Float.toString(result) + "\n" + status.toString());
         return (float) (Math.abs(space/4 - 3) + Math.abs(space%4 - 3)) / getMax();
     }
 }

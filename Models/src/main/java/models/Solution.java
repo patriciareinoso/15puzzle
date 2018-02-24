@@ -164,6 +164,11 @@ public class Solution {
      * @param initial puzzle.
      */
     public void solve (Board puzzle) throws CloneNotSupportedException, InterruptedException {
+		if (!puzzle.canBeSolved()) {
+			System.out.println("Actual puzzle: " + puzzle.toString() + "\n is invalid then cannot be solved.");
+			return;
+		}
+
         BoardTree routes = new BoardTree();
         BoardTreeNode root = new BoardTreeNode();
 
@@ -191,9 +196,12 @@ public class Solution {
             ArrayList<BoardTreeNode> successors = getMovements(actual);
             for (BoardTreeNode suc : successors) {
 
+		if (actual.isAncestor(suc.getBoardValue()))
+			continue;
+		
                 suc.setFitness(funct.calcFitness(suc.getBoardValue()));
 
-                int indexOpened = opened.indexOf(suc);
+                /*int indexOpened = opened.indexOf(suc);
                 //System.out.println("Opened: " + indexOpened + "\n");
                 if (indexOpened >= 0) {
                     //System.out.println("I'm opened.\n");
@@ -217,6 +225,7 @@ public class Solution {
 
                 if (indexClosed != -1)
                   closed.remove(indexClosed);
+		*/
 
                 actual.addChild(suc);
                 opened.add(suc);
@@ -231,21 +240,21 @@ public class Solution {
     }
     
     public static void main(String[] args) {
-        Board b1 = new Board();
+        Board b1 = new Board("1 2 3 4 0 5 6 8 9 11 7 12 13 10 14 15");
         System.out.println("B1 \n" + b1);
-        SolvingSequence seq = new SolvingSequence();
-        seq.addMovement(SolvingSequence.Direction.LEFT);
+        //SolvingSequence seq = new SolvingSequence();
+        //seq.addMovement(SolvingSequence.Direction.LEFT);
         // seq.addMovement(SolvingSequence.Direction.UP);
         // seq.addMovement(SolvingSequence.Direction.UP);
         // seq.addMovement(SolvingSequence.Direction.UP);
         // seq.addMovement(SolvingSequence.Direction.RIGHT);
         // seq.addMovement(SolvingSequence.Direction.DOWN);
         //System.out.println("Seq \n" + seq);
-        b1.applySolvingSequence(seq);
+        //b1.applySolvingSequence(seq);
         System.out.println("INITIAL \n" + b1);
         //System.out.println("B1 \n" + b1.isSolved());
 
-        Solution s1 = new Solution("Disorder");
+        Solution s1 = new Solution("Space");
         try {
             s1.solve(b1);
             System.out.println("I found a path! " + s1.getSequence().toString());
