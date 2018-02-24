@@ -180,7 +180,7 @@ public class Board implements Cloneable {
 			} catch (InvalidMovementException e){
 				System.out.println("Invalid sequence");
 			}
-			System.out.println(dir + "\n" + this);
+			//System.out.println(dir + "\n" + this);
 		}
 	}
 	
@@ -381,24 +381,24 @@ public class Board implements Cloneable {
 
 	/**
 	 * Check if the amount of tiles in the tile list {@link #tiles} is equal
-	 * to {@link #SIZE}. (1)
-	 * Check that each tile is not null. (2)
-	 * Check if the board is solvable. (3)
+	 * to {@link #SIZE}.
+	 * Check that each tile is not null.
+	 * Check if the board is solvable.
 	 * @return true if the conditions are met. False otherwise.
 	 */
 	public boolean invariant(){
 		for (int i = 0 ; i < SIZE; i++){
 			if (tiles[i] == null || !tiles[i].invariant()){
-				System.out.println("1");
+				System.out.println("1. tile invariant broken or null tile");
 				return false;
 			}
 		}
 		if (!canBeSolved()) {
-			System.out.println("2");
+			System.out.println("2. cannot be solved");
 			return false;
 		}
 		if (spacePosition < IntTile.MIN || spacePosition > IntTile.MAX){
-			System.out.println("3");
+			System.out.println("3. space position");
 			return false;
 		}
 		return true;

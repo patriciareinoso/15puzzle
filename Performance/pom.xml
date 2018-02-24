@@ -177,21 +177,12 @@ Contributor(s): Denis Conan & Oscar Guillen
         <version>1.2.1</version>
         <executions>
           <execution>
-	    <id>server</id>
+	    <id>performance</id>
             <goals>
               <goal>java</goal>
             </goals>
             <configuration>
-              <mainClass>server.Main</mainClass>
-            </configuration>
-          </execution>
-	  <execution>
-	    <id>client-server</id>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>client.ClientServer</mainClass>
+              <mainClass>performance.Performance</mainClass>
             </configuration>
           </execution>
         </executions>

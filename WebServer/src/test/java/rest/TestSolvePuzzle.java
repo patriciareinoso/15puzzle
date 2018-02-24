@@ -51,12 +51,30 @@ import models.Board;
 import models.SolvingSequence;
 
 public class TestSolvePuzzle {
+	/**
+	 * the URI.
+	 */
 	static  String REST_URI ;
 
+	/**
+	 * Http server.
+	 */
 	private static HttpServer server;
+	/**
+	 * Web Target to solving service using linear heuristic
+	 */
 	private static WebTarget service;
+	/**
+	 * Web Target to solving service using disorder heuristic
+	 */
 	private static WebTarget service2;
+	/**
+	 * Web Target to solving service using manhattan heuristic
+	 */
 	private static WebTarget service3;
+	/**
+	 * Web target to say hello to the server
+	 */
 	private static WebTarget helloService; //to test hello
 	private static URI uri;
 	private static URI helloUri; // to test hello
@@ -65,8 +83,8 @@ public class TestSolvePuzzle {
 	public static void setUp() throws Exception {
 		Properties properties = new Properties();
 		FileInputStream input = new FileInputStream("src/main/resources/rest.properties");
-        properties.load(input);
-        REST_URI = "http://"+properties.getProperty("rest.serveraddress")+"/MyServer";
+        	properties.load(input);
+        	REST_URI = "http://"+properties.getProperty("rest.serveraddress")+"/MyServer";
 		// create a resource configuration that scans for JAX-RS resources and providers
 		// in server package
 		final ResourceConfig rc = new ResourceConfig().packages("server");

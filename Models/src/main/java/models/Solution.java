@@ -48,7 +48,7 @@ public class Solution {
 	/**
      * Max number of iterations
      */
-    private static final int MAX_ITER = 200;
+    private static final int MAX_ITER = 50000;
 
     /**
      * Class constructor.
@@ -138,6 +138,7 @@ public class Solution {
         return sequence;
     }
 
+
     /**
      * Getter of board children. 
      * Create the possible children from a board node based on valid movements.
@@ -187,6 +188,13 @@ public class Solution {
         return movements;
     }
 
+	/**
+     * Getter of the function
+     * @return fitness function
+     */
+    public FitnessFunction getFunction () {
+        return funct;
+    }
 
     /**
      * Adding the sequence of moves to reach the solution.
