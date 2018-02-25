@@ -48,7 +48,7 @@ public class Solution {
 	/**
      * Max number of iterations
      */
-    private static final int MAX_ITER = 50000;
+    private static final int MAX_ITER = 10000;
 
     /**
      * Class constructor.

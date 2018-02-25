@@ -32,12 +32,12 @@ public class Performance {
 	/**
      * Min number of random moves
      */
-    private static final int min_moves = 10;
+    private static final int min_moves = 1;
 
     /**
      * Max number of random moves
      */
-    private static final int moves = 20;
+    private static final int moves = 70;
 
     /**
      * Class constructor.
