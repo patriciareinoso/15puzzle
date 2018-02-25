@@ -32,9 +32,17 @@ Compile Web server module. Here, the servers is tested:
  
 	cd WebServer
 	mvn clean install
+	cd ..
+
+Compile Performance module. Here, the servers is tested:
+ 
+	cd Performance
+	mvn clean install
+	cd ..
 
 Run Web Server:
- 
+ 	
+	cd WebServer
 	mvn exec:java@server
 
  * Open a web browser and prove the server requesting some services as
