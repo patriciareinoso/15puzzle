@@ -163,7 +163,7 @@ public class PuzzleActivity extends AppCompatActivity {
 
                 service = retrofit.create(RestService.class);
 
-                callSolve = service.solveDisorder(tiles.toString());
+                callSolve = service.solveManhattan(tiles.toString());
 
                 System.out.println(callSolve.request().toString());
 
