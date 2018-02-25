@@ -22,20 +22,18 @@ It is possible to compile the whole project in the main directory:
 	mvn clean install
 	
 
-Or let's compile per module
-
- * Compile Models module:
+Or let's compile per module. Compile Models module:
  
 	cd Models
 	mvn clean install
 	cd ..
 
- * Compile Web server module. Here, the servers is tested:
+Compile Web server module. Here, the servers is tested:
  
 	cd WebServer
 	mvn clean install
 
- * Run Web Server:
+Run Web Server:
  
 	mvn exec:java@server
 
@@ -45,11 +43,11 @@ Or let's compile per module
 	or http://localhost:8080/MyServer/puzzle/json
 	or http://localhost:8080/MyServer/puzzle/sequence/xml
 
- * Optionally, run a web client written in ClientServer.java to solve puzzles:
+Optionally, run a web client written in ClientServer.java to solve puzzles:
 
 	mvn exec:java@client-server
 
- * Optionally, run an the android app on Android Studio. Notes: 
+Optionally, run an the android app on Android Studio. Notes: 
 	- URL is fixed as: http://10.0.2.2:8080/. Because it is fixed to run on local web server.
 	- It is needed to activate the web server before.
 	- Manhattan heuristic service is used to request the solution.
